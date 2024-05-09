@@ -5,7 +5,8 @@ async function getWeatherData(qry) {
 
   try {
     const response = await fetch(
-      `${API_ENDPOINT}?key=${process.env.KEY}&q=${qry}&days=${forecastAmount}`
+      `${API_ENDPOINT}?key=${process.env.KEY}&q=${qry}&days=${forecastAmount}`,
+      { cache: 'no-store' }
     );
 
     weatherData = await response.json();
