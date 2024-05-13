@@ -10,11 +10,17 @@ const WeatherCard = () => {
   return (
     <div className='w-[400px] flex flex-col gap-8 items-center justify-center text-white text-center bg-white/[.1] backdrop-blur border-2 border-white/20 rounded-2xl p-5 transition-[height]'>
       <SearchBar />
-      {weatherData && (
+      {weatherData === 'DNE' ? (
+        <h1 className='text-3xl font-semibold'>Location not found</h1>
+      ) : (
         <>
-          <h1 className='text-3xl font-semibold text-pretty'>
-            {weatherData.location.name}, {weatherData.location.country}
-          </h1>
+          {weatherData && (
+            <>
+              <h1 className='text-3xl font-semibold'>
+                {weatherData.location.name}, {weatherData.location.country}
+              </h1>
+            </>
+          )}
         </>
       )}
     </div>

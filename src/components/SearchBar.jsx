@@ -9,8 +9,19 @@ const SearchBar = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const weather = await getWeatherData(location);
-    setWeatherData(weather);
+
+    try {
+      const weather = await getWeatherData(location);
+
+      if (weather.error && weather.error.code === 1006) {
+        setWeatherData('DNE');
+      } else {
+        setWeatherData(weather);
+      }
+    } catch (error) {
+      setWeatherData(null);
+      console.error('An error occurred while fetching weather data:', error);
+    }
   };
 
   return (
