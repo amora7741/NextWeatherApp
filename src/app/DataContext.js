@@ -6,7 +6,6 @@ export const DataContext = createContext(null);
 
 export const DataProvider = ({ children }) => {
   const [location, setLocation] = useState('');
-  const [loading, setLoading] = useState(false);
   const [weatherData, setWeatherData] = useState(null);
 
   const getWeatherData = async (qry) => {
@@ -36,8 +35,6 @@ export const DataProvider = ({ children }) => {
         getWeatherData,
         weatherData,
         setWeatherData,
-        setLoading,
-        loading,
       }}
     >
       {children}
