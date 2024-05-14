@@ -3,10 +3,13 @@ import WeatherCard from '@/components/WeatherCard';
 export default async function Home() {
   return (
     <main
-      className='min-h-screen flex flex-col items-center justify-center bg-center bg-cover'
+      className='hero min-h-screen'
       style={{ backgroundImage: 'url(/background.jpg)' }}
     >
-      <WeatherCard />
+      <div className='hero-overlay bg-opacity-60'></div>
+      <div className='hero-content text-center text-neutral-content'>
+        <WeatherCard />
+      </div>
     </main>
   );
 }

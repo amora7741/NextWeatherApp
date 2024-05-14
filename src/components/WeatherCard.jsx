@@ -9,15 +9,16 @@ import WindSpeedIcon from './WindSpeedIcon';
 import ExtraInfoDisplay from './ExtraInfoDisplay';
 
 const WeatherCard = () => {
-  const { weatherData } = useContext(DataContext);
+  const { weatherData, loading } = useContext(DataContext);
 
   useEffect(() => {
     console.log(weatherData);
   }, [weatherData]);
 
   return (
-    <div className='w-[400px] flex flex-col gap-6 items-center justify-center text-white text-center bg-white/[.1] backdrop-blur-xl border-2 border-white/20 rounded-2xl p-5 transition-[height]'>
+    <div className='w-[400px] flex flex-col gap-6 items-center justify-center text-white text-center bg-black/[.1] backdrop-blur-xl border-2 border-white/20 rounded-2xl p-5 transition-[height]'>
       <SearchBar />
+      {loading && <span className='loading loading-dots loading-lg'></span>}
       {weatherData === 'DNE' ? (
         <>
           <Image

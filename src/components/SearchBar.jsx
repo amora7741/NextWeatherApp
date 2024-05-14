@@ -4,13 +4,14 @@ import { useContext } from 'react';
 import { DataContext } from '@/app/DataContext';
 
 const SearchBar = () => {
-  const { location, setLocation, setWeatherData, getWeatherData } =
+  const { location, setLocation, setWeatherData, getWeatherData, setLoading } =
     useContext(DataContext);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
+      setLoading(true);
       const weather = await getWeatherData(location);
 
       if (weather.error && weather.error.code === 1006) {
@@ -21,6 +22,8 @@ const SearchBar = () => {
     } catch (error) {
       setWeatherData(null);
       console.error('An error occurred while fetching weather data:', error);
+    } finally {
+      setLoading(false);
     }
   };
 
