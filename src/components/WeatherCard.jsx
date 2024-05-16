@@ -147,7 +147,7 @@ const WeatherDetails = ({ weatherData, unit, toggleUnit }) => {
         </div>
         <p className='capitalize font-medium text-xl'>{condition.text}</p>
       </motion.div>
-      <div className='flex items-center gap-2'>
+      <div className='flex items-center gap-2 mb-2 mt-4'>
         <p>F</p>
         <input
           type='checkbox'
